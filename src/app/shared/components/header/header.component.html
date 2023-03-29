@@ -1,0 +1,21 @@
+<div class="p-relative pb-64">
+    <div class="w-100 index-2 p-fixed">
+        <mat-toolbar>
+            <div class="header-wrapper">
+                <h1 *ngIf="!isSmallScreen">Pexels App</h1>
+                <h1 *ngIf="isSmallScreen">PA</h1>
+                <div class="search-input-container">
+                <form [formGroup]="form" (submit)="search()">
+                    <mat-form-field appearance="standard">
+                        <input matInput formControlName="search">
+                    </mat-form-field>
+                    <button type="submit" mat-button>
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </form>
+                </div>
+                <div></div>
+            </div>
+        </mat-toolbar>
+    </div>
+</div>

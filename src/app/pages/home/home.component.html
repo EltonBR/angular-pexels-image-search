@@ -1,0 +1,16 @@
+<div class="page-wrapper">
+    <div class="image-grid">
+        <h1 *ngIf="pexelsSearchResponse.photos.length == 0">Sem resultados</h1>
+        <div class="image-container" *ngFor="let item of pexelsSearchResponse?.photos">
+            <img class="image" [defaultImage]="lazyLoadDefaultImage" [lazyLoad]="item.src.large" [useSrcset]="true" />
+            <div class="img-overlay">
+                <button  mat-button (click)="openDialog(item.src.large)">
+                    <mat-icon class="options-icon">fit_screen</mat-icon>
+                </button>
+                <button  mat-button (click)="download(item.src.original)">
+                    <mat-icon class="options-icon">download</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  accessToken: "oBI160SWLPxYCCfoWEpYuxwPN2F9GL3QyqLyJi9ZhtZIid4uk6oux4sj",
+  pexelsApiUrl: "https://api.pexels.com/v1",
+  lazyLoadDefaultImage: "/assets/images/placeholder.png"
 };
 
 /*

@@ -1,0 +1,6 @@
+<div mat-dialog-content>
+    <img [defaultImage]="lazyLoadDefaultImage" [lazyLoad]="data.url" [useSrcset]="true" class="w-100">
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Fechar</button>
+</div>
