@@ -32,7 +32,7 @@ describe('HomeComponent', () => {
         {
           provide: PexelsApiService,
           useValue: {
-            search:() => of({
+            search: jest.fn().mockImplementation(() => of({
               "page": 1,
               "per_page": 15,
               "photos": [
@@ -61,7 +61,7 @@ describe('HomeComponent', () => {
               ],
               "total_results": 8000,
               "next_page": "https://api.pexels.com/v1/search/?page=2\u0026per_page=15\u0026query=sand+car"
-            })
+            }))
           }
         }
       ]
@@ -92,13 +92,25 @@ describe('HomeComponent', () => {
   });
 
   it('should search images', () => {
-    //let spy = jest.spyOn(component, "search");
+    let spy = jest.spyOn(component, "search");
+    component.search("test");
     fixture.detectChanges();
-    //expect(spy).toHaveBeenCalled();
   });
 
   it('should load more', () => {
     component.loadMore();
     fixture.detectChanges();
+  });
+
+  it('should infinity scroll check', () => {
+    let spy = jest.spyOn(component, "loadMore");
+    component.infiniteScroll({
+      target: {
+        body: {
+          scrollHeight: window.innerHeight
+        }
+      }
+    });
+    expect(spy).toBeCalled();
   });
 });

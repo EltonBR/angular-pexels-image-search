@@ -36,21 +36,21 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private pexelsApiService: PexelsApiService, private searchService: SearchObservableService, private dialog: MatDialog) {
     this.searchSubscription = this.searchService.search$.subscribe((query) => {
       this.currentSearch = query;
-      this.search();
+      this.search(this.currentSearch ?? this.defaultSearch);
     })
   }
   ngOnDestroy(): void {
     this.searchSubscription.unsubscribe();
   }
 
-  search(): void {
-    this.pexelsApiService.search(this.currentSearch ?? this.defaultSearch).subscribe((response) => {
+  search(queryString: string): void {
+    this.pexelsApiService.search(queryString).subscribe((response) => {
       this.pexelsSearchResponse = response;
     });
   }
 
   ngOnInit(): void {
-    this.search();
+    this.search(this.defaultSearch);
   }
 
   loadMore() {
