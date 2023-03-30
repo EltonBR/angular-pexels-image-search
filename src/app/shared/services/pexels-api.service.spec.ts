@@ -51,4 +51,10 @@ describe('PexelsApiService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should be call search', () => {
+    service.search("test").subscribe((r) => {
+      expect(r.page).toEqual(1);
+    })
+  });
 });

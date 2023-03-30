@@ -14,15 +14,16 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  download(url: string): void {
-    window.open(url)
-  }
   lazyLoadDefaultImage = environment.lazyLoadDefaultImage;
   pexelsSearchResponse!: PexelsSearchModel;
   defaultSearch = "nature landscape";
   currentSearch: string | null = null;
   currentPage = 1;
   searchSubscription!: Subscription;
+
+  download(url: string): void {
+    window.open(url)
+  }
 
   openDialog(url: string): void {
     this.dialog.open(ImageDialogComponent, {
